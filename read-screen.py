@@ -8,7 +8,8 @@ pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tessera
  
 # Read image from which text needs to be extracted
 #img = cv2.imread("lights_off_better.jpg")
-img = cv2.imread("notilt.jpg")
+#img = cv2.imread("notilt.jpg")
+img = cv2.imread(r"data\video_1.jpg")
 #img = cv2.imread("lights_on.jpg")
 
 # Preprocessing the image starts
@@ -32,7 +33,7 @@ cv2.waitKey(0)
 # of the rectangle to be detected.
 # A smaller value like (10, 10) will detect 
 # each word instead of a sentence.
-rect_kernel = cv2.getStructuringElement(cv2.MORPH_RECT, (30, 1))
+rect_kernel = cv2.getStructuringElement(cv2.MORPH_RECT, (40, 1))
  
 # Applying dilation on the threshold image
 dilation = cv2.dilate(thresh1, rect_kernel, iterations = 1)
