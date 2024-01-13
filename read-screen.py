@@ -4,6 +4,20 @@ import pytesseract
 # Mention the installed location of Tesseract-OCR in your system
 pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
 
+class MonitorOSD:
+    """Class to generate objects for cross-platform OSD analysis"""
+    class OSDTreeNode:
+        """Internal Class to contain osd menu structure"""
+        str = ""
+        def __init__(self, str):
+            self.str = str
+            pass
+        def __str__(self):
+            pass
+
+    osd_tree = OSDTreeNode()
+    def __init__(self, monitortype="BVM-D9", dir="monitor_osd_data"):
+
 def getText(img, verbose=False, safeAreaPercentage=0.40):
     """ Function to retrieve the text from a predefined center of the image
 
@@ -87,14 +101,10 @@ def getText(img, verbose=False, safeAreaPercentage=0.40):
             # Append to master string
             master_string += "\n" + text
             
-
-    
     return master_string
 
 
 if __name__ == "__main__":
-
-
     # Read image from which text needs to be extracted
     #img = cv2.imread("lights_off_better.jpg")
     #img = cv2.imread("notilt.jpg")
