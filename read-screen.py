@@ -9,14 +9,23 @@ class MonitorOSD:
     class OSDTreeNode:
         """Internal Class to contain osd menu structure"""
         str = ""
-        def __init__(self, str):
+        value, parent, child = None
+        #parent = None
+        #child = None
+        def __init__(self, str, parent=None, value=None):
             self.str = str
-            pass
+            self.value = value
+            self.parent = parent
+        def setChild(self, child):
+            self.child = child
         def __str__(self):
             pass
 
     osd_tree = OSDTreeNode()
     def __init__(self, monitortype="BVM-D9", dir="monitor_osd_data"):
+        pass
+        
+
 
 def getText(img, verbose=False, safeAreaPercentage=0.40):
     """ Function to retrieve the text from a predefined center of the image
@@ -45,7 +54,7 @@ def getText(img, verbose=False, safeAreaPercentage=0.40):
     # Specify structure shape and kernel size. 
     # Kernel size increases or decreases the area 
     # of the rectangle to be detected.
-    # A smaller value like (10, 10) will detect 
+    # A smaller value like (10, 1) will detect 
     # each word instead of a sentence.
     rect_kernel = cv2.getStructuringElement(cv2.MORPH_RECT, (40, 1))
     
